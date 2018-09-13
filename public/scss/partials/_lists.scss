@@ -1,0 +1,10 @@
+.list, .list--horizontal {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.list--horizontal .list__item {
+    display: inline-block;
+    vertical-align: top;
+}

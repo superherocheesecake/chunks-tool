@@ -1,0 +1,136 @@
+.ChunksTool {
+
+    font-size:12px;
+
+    .tool{
+        height:760px;
+    }
+
+    .bold{
+        font-weight:700;
+        font-size: 13px;
+    }
+
+    .instructions{
+        padding: 0 40px;
+        max-width: 800px;
+        margin: 0 162px;
+    }
+
+    canvas {
+        display: block;
+        position: absolute;
+        top:128px;
+        left:200px;
+    }
+
+    .elements-container{
+        position:absolute;
+        left:200px;
+        top:128px;
+        text-align: right;
+        -webkit-transform: translate(-190px, 0);
+        -moz-transform: translate(-190px, 0);
+        -ms-transform: translate(-190px, 0);
+        -o-transform: translate(-190px, 0);
+        transform: translate(-190px, 0);
+
+
+        .element{
+            width:150px;
+            margin:12px 0;
+
+            span{
+                cursor: pointer;
+                display:inline-block;
+                width:20px;
+                height:20px;
+                border:solid 1px black;
+
+                &:hover{
+                    border:solid 3px #616161;
+                }
+                &.selected{
+                    border:solid 3px #616161;
+                }
+            }
+        }
+
+        .ground{
+            background-color: #cecece;
+        }
+
+        .platform1{
+            background-color: #7eff36;
+        }
+
+        .platform2{
+            background-color: #ff6271;
+        }
+
+        .platform3{
+            background-color: #38ff45;
+        }
+
+        .hole{
+            background-color: #000000;
+        }
+
+        .trip_block{
+            background-color: #0d0000;
+        }
+
+        .coin_low{
+            background-color: #ff0000;
+        }
+
+        .coin_med{
+            background-color: #7eff36;
+        }
+
+        .coin_high{
+            background-color: #fffc8d;
+        }
+
+        .spacer{
+            height:50px;
+        }
+    }
+
+    .inputs-container{
+
+        position: absolute;
+        top: 77px;
+        left: 200px;
+
+        .input{
+            display:inline-block;
+            width:150px;
+        }
+    }
+
+    .buttons-container{
+
+        position: absolute;
+        top: 646px;
+        left: 200px;
+
+        button{
+            position:relative;
+            width:150px;
+        }
+
+        .spacer{
+            width:15px;
+            display:inline-block;
+        }
+
+        .open-button{
+            input {
+                position: absolute;
+                opacity: 0;
+            }
+        }
+
+    }
+}

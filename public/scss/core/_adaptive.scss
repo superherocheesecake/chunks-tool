@@ -1,0 +1,82 @@
+$bp-narrow: 480px;
+$bp-regular: 768px;
+$bp-wide: 1024px;
+
+
+// CSS USER BREAKPOINTS
+
+@mixin mq-extra-narrow {
+   @media (max-width: $bp-narrow) {
+       @content;
+   }
+}
+
+@mixin mq-narrow {
+   @media (min-width: $bp-narrow + 1) {
+       @content;
+   }
+}
+
+@mixin mq-regular {
+   @media (min-width: $bp-regular + 1) {
+       @content;
+   }
+}
+
+@mixin mq-wide {
+   @media (min-width: $bp-wide + 1) {
+       @content;
+   }
+}
+
+
+//  Adaptive's js media queries
+
+@media (max-width: $bp-narrow) {
+    html:before {
+        position: absolute;
+        display: none;
+        content:'adaptive:extra-narrow';
+    }
+
+    .not-extra-narrow {
+        display: none;
+    }
+}
+
+@media (min-width: $bp-narrow + 1) and (max-width: $bp-regular) {
+    html:before {
+        position: absolute;
+        display: none;
+        content:'adaptive:narrow';
+    }
+
+    .not-narrow {
+        display: none;
+    }
+}
+
+@media (min-width: $bp-regular + 1) and (max-width: $bp-wide) {
+    html:before {
+        position: absolute;
+        display: none;
+        content:'adaptive:regular';
+    }
+
+    .not-regular {
+        display: none;
+    }
+}
+
+@media (min-width: $bp-wide + 1) {
+
+    html:before {
+        position: absolute;
+        display: none;
+        content:'adaptive:wide';
+    }
+
+    .not-wide {
+        display: none;
+    }
+}
