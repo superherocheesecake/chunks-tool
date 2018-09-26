@@ -9,6 +9,8 @@ npm i
 npm run start
 ```
 
+We've put this here as a little curio, a glimpse into our process, hopefully someone finds it interesting!
+
 ![alt text](assets/grab.png)
 
 ## A Little Background...
