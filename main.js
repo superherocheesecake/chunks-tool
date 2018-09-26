@@ -3,7 +3,6 @@ const {app, BrowserWindow} = require('electron')
 const path = require('path');
 
 // Keep a global reference of the window object, if you don't, the window will
-// be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
 
 function createWindow() {
@@ -12,7 +11,7 @@ function createWindow() {
         width: 1450,
         height: 700,
         icon: path.join(__dirname, 'assets/icons/1024x1024')
-    })
+    });
 
     // and load the index.html of the app.
     mainWindow.loadFile('public/index.html')
