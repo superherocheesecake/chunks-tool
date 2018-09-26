@@ -15,11 +15,18 @@ gulp.task('serve', ['sass'], function() {
 
 // Compile sass into CSS & auto-inject into browsers
 gulp.task('sass', function() {
+
+
     return gulp.src("public/scss/*.scss")
         .pipe(sassGlob())
         .pipe(sass())
-        .pipe(gulp.dest("public/css"))
-        .pipe(browserSync.stream());
+        .pipe(gulp.dest("public/css"));
+
 });
 
-gulp.task('default', ['serve']);
+gulp.watch("public/scss/*.scss", ['sass']);
+
+gulp.task('default', ['sass'],function(){
+
+    gulp.watch("public/scss/**/*.scss", ['sass']);
+});

@@ -1,7 +1,7 @@
-import {BaseView} from './BaseView.js';
-import ChunksTool from "./chunkstool/ChunksTool.js";
+const BaseView  = require('./BaseView.js');
+const ChunksTool = require("./chunkstool/ChunksTool.js");
 
-export class MainView extends BaseView {
+class MainView extends BaseView {
 
     constructor(el) {
         super(el);
@@ -163,3 +163,5 @@ export class MainView extends BaseView {
         }
     }
 }
+
+module.exports = MainView;

@@ -1,7 +1,7 @@
-import {ChunksModel} from "./ChunksModel.js";
-import {CanvasUtils as Utils} from "../../utils/CanvasUtils.js";
+const ChunksModel  = require("./ChunksModel.js");
+const CanvasUtils  = require("../../utils/CanvasUtils.js");
 
-export default class ChunksTool {
+class ChunksTool {
     constructor() {
 
         this._currentControl = "";
@@ -50,7 +50,7 @@ export default class ChunksTool {
         this._chunksModel = new ChunksModel();
         this._chunksModel.addEventListener("change", this._onChunksModelChange.bind(this));
 
-        this._buffer = Utils.CreateBuffer();
+        this._buffer = CanvasUtils.CreateBuffer();
         this._buffer.resize(1000, 500);
         this._buffer.canvas.onclick = this._onClickCanvas.bind(this);
         this.el.appendChild(this._buffer.canvas);
@@ -311,3 +311,5 @@ export default class ChunksTool {
         return height;
     }
 }
+
+module.exports = ChunksTool;

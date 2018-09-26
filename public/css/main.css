@@ -414,9 +414,10 @@ th {
   padding: 0;
   text-decoration: none;
   letter-spacing: 0;
-  color: #FFFFFF;
+  color: #000000;
   border: none;
-  outline: none;
+  outline: solid 1px black;
+  height: 20px;
   background: none;
   cursor: pointer;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
@@ -440,6 +441,24 @@ th {
  */
 .ChunksTool {
   font-size: 12px; }
+  .ChunksTool select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: 1px solid #AAA;
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -webkit-padding-end: 20px;
+    -moz-padding-end: 20px;
+    -webkit-padding-start: 2px;
+    -moz-padding-start: 2px;
+    border-radius: 0;
+    border: solid 1px black;
+    background-color: white;
+    height: 20px;
+    margin: 2px 0; }
   .ChunksTool .tool {
     height: 760px; }
   .ChunksTool .bold {
@@ -464,9 +483,17 @@ th {
     -ms-transform: translate(-190px, 0);
     -o-transform: translate(-190px, 0);
     transform: translate(-190px, 0); }
+    .ChunksTool .elements-container label {
+      vertical-align: super;
+      pointer-events: none; }
     .ChunksTool .elements-container .element {
       width: 150px;
       margin: 12px 0; }
+      .ChunksTool .elements-container .element:hover {
+        color: #FF0000;
+        text-decoration: none; }
+      .ChunksTool .elements-container .element:focus {
+        outline: none; }
       .ChunksTool .elements-container .element span {
         cursor: pointer;
         display: inline-block;
@@ -474,27 +501,31 @@ th {
         height: 20px;
         border: solid 1px black; }
         .ChunksTool .elements-container .element span:hover {
-          border: solid 3px #616161; }
+          border: solid 2px #616161;
+          color: #FF0000;
+          text-decoration: none; }
         .ChunksTool .elements-container .element span.selected {
-          border: solid 3px #616161; }
+          color: #FF0000;
+          text-decoration: none;
+          border: solid 2px #616161; }
     .ChunksTool .elements-container .ground {
-      background-color: #008000; }
+      background-color: #cecece; }
     .ChunksTool .elements-container .platform1 {
-      background-color: #adff2f; }
+      background-color: #fffc8d; }
     .ChunksTool .elements-container .platform2 {
       background-color: #7eff36; }
     .ChunksTool .elements-container .platform3 {
-      background-color: #38ff45; }
+      background-color: #ff6271; }
     .ChunksTool .elements-container .hole {
       background-color: #000000; }
     .ChunksTool .elements-container .trip_block {
-      background-color: #ff0000; }
+      background-color: #0d0000; }
     .ChunksTool .elements-container .coin_low {
-      background-color: #00c9ff; }
+      background-color: #ff0000; }
     .ChunksTool .elements-container .coin_med {
-      background-color: #0076ff; }
+      background-color: #7eff36; }
     .ChunksTool .elements-container .coin_high {
-      background-color: #0000ff; }
+      background-color: #fffc8d; }
     .ChunksTool .elements-container .spacer {
       height: 50px; }
   .ChunksTool .inputs-container {
@@ -503,10 +534,16 @@ th {
     left: 200px; }
     .ChunksTool .inputs-container .input {
       display: inline-block;
-      width: 150px; }
+      width: 150px;
+      text-transform: uppercase; }
+      .ChunksTool .inputs-container .input:hover {
+        color: #FF0000;
+        text-decoration: none; }
+      .ChunksTool .inputs-container .input:focus {
+        outline: none; }
   .ChunksTool .buttons-container {
     position: absolute;
-    top: 646px;
+    top: 641px;
     left: 200px; }
     .ChunksTool .buttons-container button {
       position: relative;
@@ -519,8 +556,10 @@ th {
       opacity: 0; }
 
 body {
+  font-family: 'Roboto', sans-serif;
   overscroll-behavior-y: none;
-  height: 100%; }
+  height: 700px;
+  overflow: hidden; }
 
 .expander {
   position: fixed;

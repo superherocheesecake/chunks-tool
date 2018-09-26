@@ -1,4 +1,4 @@
-import {MainView} from './views/MainView.js';
+const MainView = require('./js/views/MainView.js');
 
 var mainView = new MainView(document.getElementsByClassName('js-region-main')[0]);
 mainView.initialize();

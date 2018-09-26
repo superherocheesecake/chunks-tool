@@ -1,4 +1,4 @@
-export let LoadingUtils = {
+module.exports = {
 
     LoadAJAX: function(url) {
         return new Promise((resolve, reject) => {

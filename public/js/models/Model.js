@@ -1,6 +1,6 @@
-import EventDispatcher from "../events/EventDispatcher.js";
+const EventDispatcher = require('../events/EventDispatcher.js');
 
-export default class Model extends EventDispatcher {
+class Model extends EventDispatcher {
 
     constructor() {
         super();
@@ -15,7 +15,6 @@ export default class Model extends EventDispatcher {
     set(key, val, options) {
         if (key == null) return this;
 
-        // Handle both `"key", value` and `{key: value}` -style arguments.
         var attrs;
         if (typeof key === 'object') {
             attrs = key;
@@ -43,7 +42,6 @@ export default class Model extends EventDispatcher {
         var changed = this.changed;
         var prev = this._previousAttributes;
 
-        // For each `set` attribute, update or delete the current value.
         for (var attr in attrs) {
             val = attrs[attr];
             if (!_.isEqual(current[attr], val)) changes.push(attr);
@@ -55,19 +53,15 @@ export default class Model extends EventDispatcher {
             unset ? delete current[attr] : current[attr] = val;
         }
 
-        // Update the `id`.
         if (this.idAttribute in attrs) this.id = this.get(this.idAttribute);
 
-        // Trigger all relevant attribute changes.
         if (!silent) {
             if (changes.length) this._pending = options;
             for (var i = 0; i < changes.length; i++) {
-                this.trigger('change:' + changes[i], this, current[changes[i]], options);
+                this.dispatchEvent('change:' + changes[i], this, current[changes[i]], options);
             }
         }
 
-        // You might be wondering why there's a `while` loop here. Changes can
-        // be recursively nested within `"change"` events.
         if (changing) return this;
         if (!silent) {
             while (this._pending) {
@@ -94,3 +88,5 @@ export default class Model extends EventDispatcher {
     }
 
 }
+
+module.exports = Model;

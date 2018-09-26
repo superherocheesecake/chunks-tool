@@ -2,6 +2,26 @@
 
     font-size:12px;
 
+    select{
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        border: 1px solid #AAA;
+        -webkit-appearance: button;
+        -moz-appearance: button;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -webkit-padding-end: 20px;
+        -moz-padding-end: 20px;
+        -webkit-padding-start: 2px;
+        -moz-padding-start: 2px;
+        border-radius: 0;
+        border: solid 1px black;
+        background-color: white;
+        height:20px;
+        margin: 2px 0;
+    }
+
     .tool{
         height:760px;
     }
@@ -35,10 +55,24 @@
         -o-transform: translate(-190px, 0);
         transform: translate(-190px, 0);
 
+        label{
+            vertical-align: super;
+            pointer-events: none;
+        }
 
         .element{
             width:150px;
             margin:12px 0;
+
+
+            &:hover {
+                color: #FF0000;
+                text-decoration: none;
+            }
+
+            &:focus {
+                outline: none;
+            }
 
             span{
                 cursor: pointer;
@@ -48,10 +82,14 @@
                 border:solid 1px black;
 
                 &:hover{
-                    border:solid 3px #616161;
+                    border:solid 2px #616161;
+                    color: #FF0000;
+                    text-decoration: none;
                 }
                 &.selected{
-                    border:solid 3px #616161;
+                    color: #FF0000;
+                    text-decoration: none;
+                    border:solid 2px #616161;
                 }
             }
         }
@@ -61,15 +99,15 @@
         }
 
         .platform1{
-            background-color: #7eff36;
+            background-color: #fffc8d;
         }
 
         .platform2{
-            background-color: #ff6271;
+            background-color: #7eff36;
         }
 
         .platform3{
-            background-color: #38ff45;
+            background-color: #ff6271;
         }
 
         .hole{
@@ -106,13 +144,24 @@
         .input{
             display:inline-block;
             width:150px;
+            text-transform: uppercase;
+
+            &:hover {
+                color: #FF0000;
+                text-decoration: none;
+            }
+
+            &:focus {
+                outline: none;
+            }
+
         }
     }
 
     .buttons-container{
 
         position: absolute;
-        top: 646px;
+        top: 641px;
         left: 200px;
 
         button{

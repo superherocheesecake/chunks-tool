@@ -1,4 +1,4 @@
-export class BaseView {
+class BaseView {
 
     constructor(el, className) {
 
@@ -8,3 +8,5 @@ export class BaseView {
             this.el.className = className;
     }
 }
+
+module.exports = BaseView;
