@@ -478,23 +478,23 @@ th {
         .ChunksTool .elements-container .element span.selected {
           border: solid 3px #616161; }
     .ChunksTool .elements-container .ground {
-      background-color: #008000; }
+      background-color: #cecece; }
     .ChunksTool .elements-container .platform1 {
-      background-color: #adff2f; }
-    .ChunksTool .elements-container .platform2 {
       background-color: #7eff36; }
+    .ChunksTool .elements-container .platform2 {
+      background-color: #ff6271; }
     .ChunksTool .elements-container .platform3 {
       background-color: #38ff45; }
     .ChunksTool .elements-container .hole {
       background-color: #000000; }
     .ChunksTool .elements-container .trip_block {
-      background-color: #ff0000; }
+      background-color: #0d0000; }
     .ChunksTool .elements-container .coin_low {
-      background-color: #00c9ff; }
+      background-color: #ff0000; }
     .ChunksTool .elements-container .coin_med {
-      background-color: #0076ff; }
+      background-color: #7eff36; }
     .ChunksTool .elements-container .coin_high {
-      background-color: #0000ff; }
+      background-color: #fffc8d; }
     .ChunksTool .elements-container .spacer {
       height: 50px; }
   .ChunksTool .inputs-container {
