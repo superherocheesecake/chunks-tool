@@ -1,4 +1,5 @@
 class EventDispatcher {
+
     constructor() {
         this._eventListeners = this._eventListeners || new Map(); //TODO: See how Map performance compares to Object
     }
@@ -52,4 +53,4 @@ class EventDispatcher {
     }
 }
 
-export default EventDispatcher;
+module.exports = EventDispatcher;

@@ -1,74 +1,69 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-
+    <meta charset="UTF-8">
     <title>SHCC - Chunks Tool</title>
-
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui, user-scalable=no">
-    <!-- CSS files -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
-    <link rel="icon" type="image/png" href="/assets/favicon.png">
 </head>
-
 <body>
 
 <div id="application">
+    <img src="assets/SHCC_Small_Logotype_Black.png" style="position: absolute;
+    width: 59px;
+    margin: 20px;"/>
     <div class="js-region-main">
     </div>
 </div>
 
-<script src="js/vendor/lodash.js"></script>
-
-<script type="module" src="./js/main.js"></script>
-
 <div class="components" style="display:none">
 
     <div class="chunk">
+
         <div class="tool">
 
             <div class="elements-container">
                 <div class="element">
-                    GROUND
+                    <label>GROUND</label>
                     <span class="ground"></span>
                 </div>
                 <div class="element">
-                    PLATFORM1
+                    <label>PLATFORM1</label>
                     <span class="platform1"></span>
                 </div>
                 <div class="element">
-                    PLATFORM2
+                    <label>PLATFORM2</label>
                     <span class="platform2"></span>
                 </div>
                 <div class="element">
-                    PLATFORM3
+                    <label>PLATFORM3</label>
                     <span class="platform3"></span>
                 </div>
                 <div class="spacer"></div>
                 <div class="element">
-                    HOLE
+                    <label>HOLE</label>
                     <span class="hole"></span>
                 </div>
                 <div class="element">
-                    TRIP BLOCK
+                    <label>TRIP BLOCK</label>
                     <span class="trip_block"></span>
                 </div>
                 <div class="spacer"></div>
                 <div class="element">
-                    COIN LOW POINTS
+                    <label>COIN LOW POINTS</label>
                     <span class="coin_low"></span>
                 </div>
                 <div class="element">
-                    COIN MIN POINTS
+                    <label>COIN MIN POINTS</label>
                     <span class="coin_med"></span>
                 </div>
                 <div class="element">
-                    COIN HIGH POINTS
-                    <span class="coin_high"></span>
+                    <label>COIN HIGH POINTS</label>
+                     <span class="coin_high"></span>
                 </div>
                 <div class="spacer"></div>
                 <div class="element">
-                    CLEAR
+                    <label>CLEAR</label>
                     <span class="clear"></span>
                 </div>
 
@@ -77,14 +72,14 @@
             <div class="inputs-container">
 
                 <div class="input">
-                    Chunk
+                    <span>Chunk</span>
                     <select class="js-input-chunks">
                     </select>
                 </div>
 
                 <div class="input">
                     Level
-                    <select class="js-input-level">
+                    <select class="js-input-level list">
                         <option value="level1">1</option>
                         <option value="level2">2</option>
                         <option value="level3">3</option>
@@ -93,7 +88,7 @@
 
                 <div class="input">
                     Width
-                    <select class="js-input-width">
+                    <select class="js-input-width list">
                         <option value="16">16</option>
                         <option value="20">20</option>
                         <option value="24">24</option>
@@ -116,7 +111,7 @@
 
                 <div class="input">
                     Height
-                    <select class="js-input-height">
+                    <select class="js-input-height list">
                         <option value="16">16</option>
                         <option value="20">20</option>
                         <option value="24">24</option>
@@ -127,27 +122,27 @@
 
             <div class="buttons-container">
 
-                <button class="new-chunk-button">
+                <button class="new-chunk-button button">
                     NEW CHUNK
                 </button>
 
-                <button class="erase-button">
+                <button class="erase-button button">
                     DELETE CHUNK
                 </button>
 
                 <span class="spacer"></span>
 
-                <button class="write-text-button">
+                <button class="write-text-button button">
                     WRITE TEXT
                 </button>
 
-                <button class="write-json-button">
+                <button class="write-json-button button">
                     WRITE JSON
                 </button>
 
                 <span class="spacer"></span>
 
-                <button class="open-button">
+                <button class="open-button button">
                     <input class="file_button" type="file" id="files" name="files[]" multiple/>
                     IMPORT CHUNKS
                 </button>
@@ -156,36 +151,15 @@
             </div>
         </div>
 
-        <div class="instructions">
-            <p class="bold">Chunk generator rules:</p>
-
-            <p><span class="bold">Floor:</span> 1 floor piece is always 4 grid points wide. Want 2 floor pieces at 8
-                floor grid points.
-                6 grid points will generate 1 floor and 2 empty tiles.</p>
-
-            <p><span class="bold">Hole:</span> Min. 5 grid points wide. Can be as long as you want after that.</p>
-
-            <p><span class="bold">Platform:</span> A platform has a width of min 2 grid points wide and can only be
-                1grid point height.</p>
-
-            <p>Space on the Y axis between floor and platform or platform and platform should be 4 grid points.
-                For example the floor is on row 1 the platform should be on row 5.
-                If you want a platform higher the next platform will be on row 9.</p>
-
-            <p>On the X axis the max spacing between the platforms will be 18 grid points.
-                So if the end of platform one is on column 2 than the max placement of platform two starts on column
-                20.</p>
-
-            <p><span class="bold">Pickups:</span> Pickups consist of 1 grid point. You should not mix and match pickups.
-                Use 1 color for the
-                chunk.</p>
-
-
-        </div>
-
     </div>
 
 </div>
-
+<script>
+    // You can also require other files to run in this process
+    require('../renderer.js')
+</script>
+<script src="js/vendor/lodash.js"></script>
+<script src="js/vendor/sylvester.src.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>

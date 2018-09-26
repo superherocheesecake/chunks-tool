@@ -6,14 +6,13 @@
 
     text-decoration: none;
     letter-spacing: 0;
-    color: #FFFFFF;
 
+    color: #000000;
     border: none;
-    outline: none;
-
+    outline: solid 1px black;
+    height:20px;
     background: none;
     cursor: pointer;
-
     -webkit-tap-highlight-color: rgba(0,0,0,0);
 
     &:hover {

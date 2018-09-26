@@ -1,4 +1,4 @@
-import '../vendor/sylvester.src.js';
+require ('../vendor/sylvester.src.js');
 
 var TRANSFORM_PREFIX = 'transform';
 var TRANSFORM_3D = true;//Modernizr["csstransforms3d"];
@@ -16,7 +16,7 @@ for (var i = 0; i < domPrefixes.length; i++) {
 }
 TRANSFORM_PREFIX += 'transform';
 
-export let TransformUtils = {
+module.exports = {
 
     Translate(el, pos) {
 

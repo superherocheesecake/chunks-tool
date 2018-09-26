@@ -1,4 +1,4 @@
-export let CanvasUtils = {
+module.exports = {
 
     CreateBufferWebGL() {
         var canvas = document.createElement('canvas');

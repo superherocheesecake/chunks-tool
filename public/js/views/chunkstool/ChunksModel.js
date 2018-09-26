@@ -1,6 +1,7 @@
-import Model from "../../models/Model.js";
+const Model = require('../../models/Model.js');
+const Utils = require('../../utils/Utils.js');
 
-export class ChunksModel extends Model{
+class ChunksModel extends Model {
 
     constructor() {
         super();
@@ -8,11 +9,11 @@ export class ChunksModel extends Model{
         this._localStorage = false;
 
         this.attributes = {
-            "currentLevel": 0,
-            "currentChunk": 0,
-            "chunks": {
-                "date": "",
-                "levels": [
+            'currentLevel': 0,
+            'currentChunk': 0,
+            'chunks': {
+                'date': '',
+                'levels': [
                     [],
                     [],
                     []
@@ -30,7 +31,7 @@ export class ChunksModel extends Model{
         var chunk = this.getCurrentChunk();
         var points = chunk.points;
         points[index].value = value;
-        this.dispatchEvent("change", this, {});
+        this.dispatchEvent('change', this, {});
         this._save();
     }
 
@@ -51,7 +52,7 @@ export class ChunksModel extends Model{
                 points.push({
                     x: x,
                     y: y,
-                    value: y == dimensions.h - 1 ? "a" : ""
+                    value: y == dimensions.h - 1 ? 'a' : ''
                 });
             }
         }
@@ -67,49 +68,49 @@ export class ChunksModel extends Model{
         var level = this.getCurrentLevel();
         var chunk = {
             points: [],
-            width: 16,
-            height: 16
+            width: 80,
+            height: 24
         };
         level.push(chunk);
-        this.set("currentChunk", level.length - 1);
+        this.set('currentChunk', level.length - 1);
         this.reset();
         return chunk;
     }
 
     saveChunksText() {
-        var txt = "";
-        var levels = this.get("chunks").levels;
+        var txt = '';
+        var levels = this.get('chunks').levels;
         for (var i = 0; i < levels.length; i++) {
             var blocks = levels[i];
             for (var b = 0; b < blocks.length; b++) {
                 var block = blocks[b];
                 //start with name
-                var str = "level :" + i + ", chunk :" + b + "\n";
-                var line = "";
+                var str = 'level :' + i + ', chunk :' + b + '\n';
+                var line = '';
                 var l = 0;
                 while (l++ < block.width)
-                    line += "#";
-                str += line + "#\n";
+                    line += '#';
+                str += line + '#\n';
 
                 for (var y = 0; y < block.height; y++) {
                     for (var x = 0; x < block.width; x++) {
                         var index = y * block.width + x;
-                        var value = block.points[index].value != "" ? block.points[index].value : " ";
+                        var value = block.points[index].value != '' ? block.points[index].value : ' ';
                         str += value;
                     }
-                    str += "#\n";
+                    str += '#\n';
                 }
-                str += line + "#\n\n";
+                str += line + '#\n\n';
                 txt += str;
             }
         }
         var blob = new Blob([txt], {type: 'text'});
-        Utils.WriteBlobToFile("chunk.txt", blob);
+        Utils.WriteBlobToFile('chunk.txt', blob);
     }
 
     saveChunksJSON() {
 
-        var levels = this.get("chunks").levels;
+        var levels = this.get('chunks').levels;
         var lArr = [];
         for (var i = 0; i < levels.length; i++) {
             var blocks = levels[i];
@@ -126,7 +127,7 @@ export class ChunksModel extends Model{
                     for (var x = 0; x < block.width; x++) {
                         var index = y * block.width + x;
                         var value = block.points[index].value;
-                        hasValue = hasValue || (value != "" && value != " ");
+                        hasValue = hasValue || (value != '' && value != ' ');
                         row.push(value);
                     }
 
@@ -136,9 +137,9 @@ export class ChunksModel extends Model{
 
                 }
                 bArr.push({
-                    "width": block.width,
-                    "height": block.height,
-                    "points": arr
+                    'width': block.width,
+                    'height': block.height,
+                    'points': arr
                 });
             }
 
@@ -146,11 +147,11 @@ export class ChunksModel extends Model{
         }
 
         var data = {
-            "levels": lArr
+            'levels': lArr
         };
 
         var blob = new Blob([JSON.stringify(data)], {type: 'application/json'});
-        Utils.WriteBlobToFile("chunks.json", blob);
+        Utils.WriteBlobToFile('chunks.json', blob);
     }
 
     setChunksJSON(json) {
@@ -167,48 +168,48 @@ export class ChunksModel extends Model{
                     for (var y = 0; y < height; y++) {
                         var row = y - offset;
                         for (var x = 0; x < width; x++) {
-                            var value = row >= 0 ? chunk.points[row][x] : " ";
+                            var value = row >= 0 ? chunk.points[row][x] : ' ';
                             points.push({
-                                "x": x,
-                                "y": y,
-                                "value": value
+                                'x': x,
+                                'y': y,
+                                'value': value
                             });
                         }
                     }
                     chunks.push({
-                        "width": width,
-                        "height": height,
-                        "points": points
+                        'width': width,
+                        'height': height,
+                        'points': points
                     });
                 });
                 levels.push(chunks);
             });
 
-            this.set("chunks", {"levels": levels});
+            this.set('chunks', {'levels': levels});
         }
     }
 
     setCurrentChunk(value) {
-        this.set("currentChunk", value);
+        this.set('currentChunk', value);
     }
 
     setCurrentLevel(value) {
-        this.set("currentChunk", 0);
-        this.set("currentLevel", value);
+        this.set('currentChunk', 0);
+        this.set('currentLevel', value);
     }
 
     getCurrentLevel() {
-        var chunks = this.get("chunks");
-        var level = this.get("currentLevel");
+        var chunks = this.get('chunks');
+        var level = this.get('currentLevel');
         return chunks.levels[level];
     }
 
     getCurrentChunk() {
-        var chunks = this.get("chunks");
-        var currentLevel = this.get("currentLevel");
+        var chunks = this.get('chunks');
+        var currentLevel = this.get('currentLevel');
         var level = chunks.levels[currentLevel];
         if (level.length)
-            return level[this.get("currentChunk")];
+            return level[this.get('currentChunk')];
         else {
             var chunk = this.newChunk();
             return chunk;
@@ -257,3 +258,5 @@ export class ChunksModel extends Model{
     }
 
 }
+
+module.exports = ChunksModel;
